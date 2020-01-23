@@ -8,6 +8,9 @@ import { Container, Content, LoadingIcon } from './styles';
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]);
+  const [searchRestaurant, setSearchRestaurant] = useState('');
+
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -18,6 +21,7 @@ export default function Home() {
         const { data } = await api.get('restaurants');
 
         setRestaurants(data);
+        setAllRestaurants(data);
       } catch (error) {
         toast.error(
           'Algo deu errado ao buscar os restaurantes, tente novamente mais tarde!'
@@ -30,12 +34,30 @@ export default function Home() {
     fetchRestaurants();
   }, []);
 
+  function handleSearchRestaurants() {
+    const filteredRestaurants = allRestaurants.filter(restaurant => {
+      const nameUpper = restaurant.name.toUpperCase();
+      const inputTextUpper = searchRestaurant.toUpperCase();
+
+      return nameUpper.indexOf(inputTextUpper) > -1;
+    });
+
+    return setRestaurants(filteredRestaurants);
+  }
+
+  useEffect(() => {
+    handleSearchRestaurants();
+  }, [searchRestaurant]); //eslint-disable-line
+
   return (
     <Container>
       <header>
         <h1>Bem-vindo ao Lista Rango</h1>
 
-        <Search />
+        <Search
+          searchRestaurant={searchRestaurant}
+          setSearchRestaurant={setSearchRestaurant}
+        />
       </header>
 
       {isLoading ? (

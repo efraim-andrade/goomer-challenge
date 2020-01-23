@@ -9,7 +9,7 @@ export default function Card({ name, address, hours, image }) {
   }
 
   return (
-    <Container href="#">
+    <Container href="#" data-testid="restaurant">
       <img src={image} alt="Logo" />
 
       <div className="info">
@@ -22,9 +22,8 @@ export default function Card({ name, address, hours, image }) {
 
             <div>
               {hours.map((hour, index) => (
-                <p>
-                  <span key={`${hour.from}-${index}`}>{hour.from}</span> -
-                  <span key={`${hour.to}-${index}`}>{hour.to}</span>
+                <p key={index}>
+                  <span>{hour.from}</span> - <span>{hour.to}</span>
                 </p>
               ))}
             </div>

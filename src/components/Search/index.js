@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { FaSearch } from 'react-icons/fa';
 
 import { colors } from '~/theme';
 
 import { Container } from './styles';
 
-export default function Search() {
-  const [value, setValue] = useState('');
-
+export default function Search({ searchRestaurant, setSearchRestaurant }) {
   return (
     <Container>
       <input
         type="text"
-        value={value}
+        value={searchRestaurant}
         placeholder="Buscar estabelecimento"
-        onChange={event => setValue(event.target.value)}
+        onChange={event => setSearchRestaurant(event.target.value)}
       />
 
       <button type="button" onClick={() => {}}>
@@ -23,3 +22,8 @@ export default function Search() {
     </Container>
   );
 }
+
+Search.propTypes = {
+  searchRestaurant: PropTypes.string.isRequired,
+  setSearchRestaurant: PropTypes.func.isRequired,
+};
