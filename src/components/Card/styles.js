@@ -24,7 +24,7 @@ export const Container = styled.a`
 
   > img {
     width: ${pxToRem(100)};
-    height: ${pxToRem(100)};
+    height: ${pxToRem(110)};
     border-top-left-radius: ${metrics.borderRadius()};
     border-bottom-left-radius: ${metrics.borderRadius()};
 
@@ -35,17 +35,34 @@ export const Container = styled.a`
     margin-left: ${metrics.baseSpacing(3)};
 
     > h1 {
-      margin-bottom: ${pxToRem(2)};
+      margin-bottom: ${pxToRem(6)};
 
       ${fonts.size2};
       font-weight: 500;
       color: ${colors.black};
     }
 
-    > p {
+    p {
+      & + p {
+        margin-top: ${pxToRem(2)};
+      }
+
       ${fonts.size1};
       font-weight: 400;
       color: ${colors.black};
+    }
+
+    > .hours {
+      margin-top: ${metrics.baseSpacing(1)};
+
+      display: flex;
+      align-items: center;
+
+      > p {
+        margin-right: ${metrics.baseSpacing(2)};
+
+        font-weight: 700;
+      }
     }
   }
 `;
@@ -64,7 +81,8 @@ export const Flag = styled.div`
   justify-content: center;
 
   transition: 0.3s;
-  background: ${colors.secondary};
+  background: ${({ isClosed }) =>
+    isClosed ? colors.secondaryLight : colors.secondary};
 
   > span {
     ${fonts.size0};

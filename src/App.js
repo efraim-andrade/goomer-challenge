@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 
 import Routes from '~/routes';
 import { Header } from '~/components';
@@ -12,6 +13,8 @@ export default function App() {
       <Header />
 
       <Routes />
+
+      <ToastContainer autoClose={4000} />
     </>
   );
 }

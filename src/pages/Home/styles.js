@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Eclipse } from 'react-loading-io';
 
-import { fonts, metrics } from '~/theme';
+import { fonts, metrics, colors } from '~/theme';
 
 export const Container = styled.div`
   width: 100%;
@@ -24,7 +25,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  margin: 0 ${metrics.baseSpacing(4)};
+  margin: 0 ${metrics.baseSpacing(0.5)};
 
   display: grid;
   justify-items: center;
@@ -39,4 +40,13 @@ export const Content = styled.div`
   @media screen and (max-width: 770px) {
     grid-template-columns: 1fr;
   }
+`;
+
+export const LoadingIcon = styled(Eclipse).attrs({
+  color: colors.primary,
+  size: 120,
+})`
+  margin: 0 auto;
+
+  display: block;
 `;

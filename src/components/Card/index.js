@@ -1,23 +1,57 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Container, Flag } from './styles';
 
-export default function Card() {
+export default function Card({ name, address, hours, image }) {
+  function isClosed() {
+    return true;
+  }
+
   return (
     <Container href="#">
-      <img
-        src="https://images.unsplash.com/photo-1525640788966-69bdb028aa73?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d53c30ba55d9ca863d57fabfffdb416b&auto=format&fit=crop&w=1047&q=80"
-        alt="Logo"
-      />
+      <img src={image} alt="Logo" />
 
       <div className="info">
-        <h1>Nome do Restaurante</h1>
-        <p>Endereço do restaurante</p>
+        <h1>{name}</h1>
+        <p>{address}</p>
+
+        {hours.length > 0 && (
+          <div className="hours">
+            <p>horários</p>
+
+            <div>
+              {hours.map((hour, index) => (
+                <p>
+                  <span key={`${hour.from}-${index}`}>{hour.from}</span> -
+                  <span key={`${hour.to}-${index}`}>{hour.to}</span>
+                </p>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
-      <Flag className="flag">
-        <span>Aberto agora</span>
+      <Flag className="flag" isClosed={isClosed()}>
+        <span>{isClosed() ? 'Fechado' : 'Aberto agora'}</span>
       </Flag>
     </Container>
   );
 }
+
+Card.defaultProps = {
+  hours: [],
+};
+
+Card.propTypes = {
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  hours: PropTypes.arrayOf(
+    PropTypes.shape({
+      from: PropTypes.string,
+      to: PropTypes.string,
+      days: PropTypes.arrayOf(PropTypes.number),
+    })
+  ),
+};
