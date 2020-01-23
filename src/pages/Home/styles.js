@@ -8,6 +8,8 @@ export const Container = styled.div`
   max-width: 1100px;
 
   header {
+    margin-bottom: ${metrics.baseSpacing(5)};
+
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -19,4 +21,13 @@ export const Container = styled.div`
       text-align: center;
     }
   }
+`;
+
+export const Content = styled.div`
+  margin: 0 ${metrics.baseSpacing(4)};
+
+  display: grid;
+  row-gap: ${metrics.baseSpacing(4)};
+  column-gap: ${metrics.baseSpacing(6)};
+  grid-template-columns: repeat(3, 1fr);
 `;

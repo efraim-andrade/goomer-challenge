@@ -1,6 +1,9 @@
 const remSize = 16;
 
 export default {
+  size0: {
+    'font-size': `${8 / remSize}rem`,
+  },
   size1: {
     'font-size': `${12 / remSize}rem`,
   },

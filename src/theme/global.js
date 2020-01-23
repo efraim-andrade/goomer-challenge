@@ -37,4 +37,8 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  p, span {
+    backface-visibility: hidden;
+  }
 `;
