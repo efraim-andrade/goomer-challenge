@@ -27,7 +27,16 @@ export const Content = styled.div`
   margin: 0 ${metrics.baseSpacing(4)};
 
   display: grid;
+  justify-items: center;
   row-gap: ${metrics.baseSpacing(4)};
   column-gap: ${metrics.baseSpacing(6)};
   grid-template-columns: repeat(3, 1fr);
+
+  @media screen and (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 770px) {
+    grid-template-columns: 1fr;
+  }
 `;
