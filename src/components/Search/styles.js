@@ -19,6 +19,7 @@ export const Container = styled.div`
 
   > input {
     border: none;
+    width: 100%;
 
     font-weight: 500;
     color: ${colors.black};

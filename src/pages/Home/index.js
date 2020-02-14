@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
 
 import { Search, Card } from '~/components';
@@ -34,7 +34,7 @@ export default function Home() {
     fetchRestaurants();
   }, []);
 
-  function handleSearchRestaurants() {
+  const handleSearchRestaurants = useCallback(() => {
     const filteredRestaurants = allRestaurants.filter(restaurant => {
       const nameUpper = restaurant.name.toUpperCase();
       const inputTextUpper = searchRestaurant.toUpperCase();
@@ -43,7 +43,7 @@ export default function Home() {
     });
 
     return setRestaurants(filteredRestaurants);
-  }
+  }, [allRestaurants, searchRestaurant]);
 
   useEffect(() => {
     handleSearchRestaurants();
