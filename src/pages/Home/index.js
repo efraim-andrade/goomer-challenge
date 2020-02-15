@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
 
-import { Search, Card } from '~/components';
 import api from '~/services/api';
+import { Search, Card } from '~/components';
+import { filterRestaurants } from '~/functions';
 
-import { Container, Content, LoadingIcon } from './styles';
+import { Container, Content, LoadingIcon, Message } from './styles';
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState('');
 
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -20,9 +22,11 @@ export default function Home() {
       try {
         const { data } = await api.get('restaurants');
 
+        setError(false);
         setRestaurants(data);
         setAllRestaurants(data);
-      } catch (error) {
+      } catch (err) {
+        setError(true);
         toast.error(
           'Algo deu errado ao buscar os restaurantes, tente novamente mais tarde!'
         );
@@ -35,11 +39,9 @@ export default function Home() {
   }, []);
 
   const handleSearchRestaurants = useCallback(() => {
-    const filteredRestaurants = allRestaurants.filter(restaurant => {
-      const nameUpper = restaurant.name.toUpperCase();
-      const inputTextUpper = searchRestaurant.toUpperCase();
-
-      return nameUpper.indexOf(inputTextUpper) > -1;
+    const filteredRestaurants = filterRestaurants({
+      allRestaurants,
+      searchRestaurant,
     });
 
     return setRestaurants(filteredRestaurants);
@@ -48,6 +50,28 @@ export default function Home() {
   useEffect(() => {
     handleSearchRestaurants();
   }, [searchRestaurant]); //eslint-disable-line
+
+  const renderContent = useCallback(() => {
+    if (isLoading) return <LoadingIcon />;
+
+    if (error)
+      return (
+        <Message type="error">
+          Algo deu errado ao ao buscar restaurantes :/
+        </Message>
+      );
+
+    if (restaurants.length === 0)
+      return <Message>Nada foi encontrado...</Message>;
+
+    return (
+      <Content>
+        {restaurants.map(restaurant => (
+          <Card key={restaurant.id} {...restaurant} />
+        ))}
+      </Content>
+    );
+  }, [error, isLoading, restaurants]);
 
   return (
     <Container>
@@ -60,15 +84,7 @@ export default function Home() {
         />
       </header>
 
-      {isLoading ? (
-        <LoadingIcon />
-      ) : (
-        <Content>
-          {restaurants.map(restaurant => (
-            <Card key={restaurant.id} {...restaurant} />
-          ))}
-        </Content>
-      )}
+      {renderContent()}
     </Container>
   );
 }

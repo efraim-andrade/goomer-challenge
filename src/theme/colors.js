@@ -7,4 +7,6 @@ export default {
   grey: '#FBFBFB',
   black: '#404040',
   dark: '#000',
+
+  danger: '#f55',
 };

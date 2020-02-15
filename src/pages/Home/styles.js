@@ -50,3 +50,13 @@ export const LoadingIcon = styled(Eclipse).attrs({
 
   display: block;
 `;
+
+export const Message = styled.span`
+  width: 100%;
+  margin: 0 auto;
+
+  display: block;
+
+  text-align: center;
+  color: ${({ type }) => (type === 'error' ? colors.danger : colors.black)};
+`;
