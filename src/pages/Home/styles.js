@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { Eclipse } from 'react-loading-io';
 
 import { fonts, metrics, colors } from '~/theme';
@@ -7,6 +8,10 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   max-width: 1100px;
+
+  ${media.lessThan('small')`
+    padding: 0 20px;
+  `}
 
   header {
     margin-bottom: ${metrics.baseSpacing(5)};

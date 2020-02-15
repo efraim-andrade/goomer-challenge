@@ -41,7 +41,7 @@ export default function Home() {
   const handleSearchRestaurants = useCallback(() => {
     const filteredRestaurants = filterRestaurants({
       allRestaurants,
-      searchRestaurant,
+      restaurantName: searchRestaurant,
     });
 
     return setRestaurants(filteredRestaurants);

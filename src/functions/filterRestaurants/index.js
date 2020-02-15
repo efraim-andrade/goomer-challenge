@@ -1,7 +1,4 @@
-export default function handleSearchRestaurants({
-  allRestaurants,
-  restaurantName,
-}) {
+export default function filterRestaurants({ allRestaurants, restaurantName }) {
   const filteredRestaurants = allRestaurants.filter(restaurant => {
     const nameUpper = restaurant.name.toUpperCase();
     const inputTextUpper = restaurantName.toUpperCase();
