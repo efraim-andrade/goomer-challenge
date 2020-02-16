@@ -43,7 +43,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --coverage --watchAll=false"
+    "coverage": "yarn test -- --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -61,16 +61,16 @@
     ]
   },
   "jest": {
-    "setupFilesAfterEnv": [
-      "@testing-library/jest-dom/extend-expect"
-    ],
     "moduleNameMapper": {
       "^~/(.*)": "<rootDir>/src/$1"
     },
-    "coverageDirectory": "__tests__/coverage",
     "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
       "!src/index.js",
-      "!src/App.js"
+      "!src/App.js",
+      "!src/routes/index.js",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/"
     ]
   }
 }

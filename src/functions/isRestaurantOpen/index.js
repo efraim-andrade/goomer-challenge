@@ -75,13 +75,13 @@ export default function isRestaurantOpen(openHours) {
         }
       }
 
-      console.log(`now`, now);
-      console.log(`from`, from);
-      console.log(`to`, to);
-      console.log(
-        `isAfter(now, from) && isBefore(now, to)`,
-        isAfter(now, from) && isBefore(now, to)
-      );
+      // console.log(`now`, now);
+      // console.log(`from`, from);
+      // console.log(`to`, to);
+      // console.log(
+      //   `isAfter(now, from) && isBefore(now, to)`,
+      //   isAfter(now, from) && isBefore(now, to)
+      // );
 
       return isAfter(now, from) && isBefore(now, to);
     }).length > 0

@@ -6,6 +6,8 @@
 
 O Projeto envolve mostrar uma lista de restaurantes com seu cardápio e horário de funcionamento, onde envolve manipulação de horários e datas, filtragem de conteúdo, e consumo de API.
 
+<!-- Aqui vai vir as estatisticas/observacoes do projeto  -->
+
 [Mais Informações...](#Challenge---Developer-Frontend)
 
 ### [Demonstracao online](https://goomerchallenge.netlify.com)
