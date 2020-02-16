@@ -1,8 +1,16 @@
-# :fork_and_knife: Goomer Challenge
+# :fork_and_knife: Goomer Challenge :fork_and_knife:
 
 <img src="./src/assets/images/goomer-logo.png" style="display: block; margin: 0 auto;" />
 
 ## ✨ Projeto
+
+O Projeto envolve mostrar uma lista de restaurantes com seu cardápio e horário de funcionamento, onde envolve manipulação de horários e datas, filtragem de conteúdo, e consumo de API.
+
+[Mais Informações...](#Challenge---Developer-Frontend)
+
+### [Demonstracao online](https://goomerchallenge.netlify.com)
+
+<!-- Aqui vai vir o GIF do funcionamento  -->
 
 📦 Instalar dependencias
 
@@ -14,7 +22,7 @@
 
 ---
 
-## Testes
+## :scroll: Testes
 
 Rodar testes automatizados
 
@@ -26,7 +34,7 @@ Verificar o quanto a aplicação foi testada
 
 ---
 
-## Challenge - Developer Frontend
+# Challenge - Developer Frontend
 
 Você provavelmente já está participando do nosso processo seletivo, mas se você caiu aqui por acaso, leia esse documento até o final e se você se interessar, pode começar o processo à partir daqui =]
 
