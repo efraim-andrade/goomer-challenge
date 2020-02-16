@@ -16,11 +16,11 @@ O Projeto mostra uma lista de restaurantes com seu cardápio e horário de funci
 
 #### Desafios
 
-- Mexer com a parte de horarios e datas foi sem duvida a parte mais desafiadora do challenge, principalmente por conta de ter que lidar com horarios de restaurantes que podiam abrir em um dia e fechar no outro.
+- Lidar com a parte de horários e datas foi sem dúvida a parte mais desafiadora do challenge, principalmente por conta de ter que lidar com horários de restaurantes que podiam abrir em um dia e fechar no outro.
 
 #### Problemas
 
-- Tive dificuldade na parte de fazer o mock do new Date() do javascript por alguma incompatibilidade com o date-fns ou por simplesmente resetar os setters do Date e nao pegar os dados corretos passados para a funcao
+- Tive dificuldade na parte de fazer o mock do new Date() do javascript por alguma incompatibilidade com o date-fns ou por simplesmente resetar os setters do Date e nao pegar os dados corretos passados para a função
 
 ## :office: Usando Localmente
 
