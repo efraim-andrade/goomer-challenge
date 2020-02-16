@@ -6,6 +6,14 @@
 
 O Projeto envolve mostrar uma lista de restaurantes com seu cardápio e horário de funcionamento, onde envolve manipulação de horários e datas, filtragem de conteúdo, e consumo de API.
 
+[Mais Informações...](#Challenge---Developer-Frontend)
+
+<!-- Aqui vai vir as estatisticas/observacoes do projeto  -->
+
+### [Demonstracao online](https://goomerchallenge.netlify.com)
+
+<!-- Aqui vai vir o GIF do funcionamento  -->
+
 #### Desafios
 
 - Mexer com a parte de horarios e datas foi sem duvida a parte mais desafiadora do challenge, principalmente por conta de ter que lidar com horarios de restaurantes que podiam abrir em um dia e fechar no outro.
@@ -13,14 +21,6 @@ O Projeto envolve mostrar uma lista de restaurantes com seu cardápio e horário
 #### Problemas
 
 - Tive dificuldade na parte de fazer o mock do new Date() do javascript por alguma incompatibilidade com o date-fns ou por simplesmente resetar os setters do Date e nao pegar os dados corretos passados para a funcao
-
-<!-- Aqui vai vir as estatisticas/observacoes do projeto  -->
-
-[Mais Informações...](#Challenge---Developer-Frontend)
-
-### [Demonstracao online](https://goomerchallenge.netlify.com)
-
-<!-- Aqui vai vir o GIF do funcionamento  -->
 
 ## :office: Usando Localmente
 
