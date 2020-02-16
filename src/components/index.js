@@ -4,3 +4,4 @@ export { default as Search } from './Search';
 export { default as Accordion } from './Accordion';
 export { default as LoadingIcon } from './LoadingIcon';
 export { default as RestaurantInfo } from './RestaurantInfo';
+export { default as RestaurantCard } from './RestaurantCard';

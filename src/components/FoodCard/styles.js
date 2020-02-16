@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+import Card from '../Card';
+
+export const Container = styled(Card)``;
 
 export const Flag = styled.div``;

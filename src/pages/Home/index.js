@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import api from 'src/services/api';
 import { filterRestaurants } from 'src/functions';
-import { Search, Card, LoadingIcon } from 'src/components';
+import { Search, RestaurantCard, LoadingIcon } from 'src/components';
 
 import { Container, Content, Message } from './styles';
 
@@ -67,7 +67,7 @@ export default function Home() {
     return (
       <Content>
         {restaurants.map(restaurant => (
-          <Card key={restaurant.id} {...restaurant} />
+          <RestaurantCard key={restaurant.id} {...restaurant} />
         ))}
       </Content>
     );
