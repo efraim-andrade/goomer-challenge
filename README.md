@@ -12,7 +12,13 @@ O Projeto envolve mostrar uma lista de restaurantes com seu cardápio e horário
 
 <!-- Aqui vai vir o GIF do funcionamento  -->
 
-📦 Instalar dependencias
+## Usando Localmente
+
+### :cloud: Clonar projeto
+
+`$ git clone git@github.com:efraim-andrade/goomer-challenge.git`
+
+### 📦 Instalar dependencias
 
 `$ yarn`
 
@@ -22,7 +28,7 @@ O Projeto envolve mostrar uma lista de restaurantes com seu cardápio e horário
 
 ---
 
-## :scroll: Testes
+### :scroll: Testes
 
 Rodar testes automatizados
 
