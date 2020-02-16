@@ -1,14 +1,14 @@
-# Goomer Challenge
+# :fork_and_knife: Goomer Challenge
 
-![./src/assets/images/goomer-logo.png]
+<img src="./src/assets/images/goomer-logo.png" style="display: block; margin: 0 auto;" />
 
-## Projeto
+## ✨ Projeto
 
-Instalar dependencias
+📦 Instalar dependencias
 
 `$ yarn`
 
-Iniciar o projeto
+🚀 Iniciar o projeto
 
 `$ yarn start`
 
@@ -25,16 +25,6 @@ Verificar o quanto a aplicação foi testada
 `$ yarn coverage`
 
 ---
-
-## Documentação de Componentes
-
-Iniciar a documentação
-
-`$ yarn storybook`
-
----
-
-![alt text](https://github.com/goomerdev/job-dev-frontend-interview/raw/master/media/logo-azul.png 'Goomer')
 
 ## Challenge - Developer Frontend
 
