@@ -47,6 +47,15 @@ export const Button = styled(AccordionItemButton)`
 
 export const Content = styled(AccordionItemPanel)`
   margin-top: ${metrics.baseSpacing(3)};
+
+  grid-gap: ${pxToRem(30)};
+  grid-template-columns: 1fr 1fr;
+
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      display: grid;
+    `}
 `;
 
 export const Icon = styled.img`

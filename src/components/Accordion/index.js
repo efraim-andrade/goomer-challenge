@@ -18,16 +18,15 @@ const AccordionItem = ({ category, isOpen, items }) => (
       </Button>
     </Heading>
 
-    <Content>
+    <Content isOpen={isOpen}>
       {items.map(item => (
-        <FoodCard key={item.name} />
+        <FoodCard key={item.name} {...item} />
       ))}
     </Content>
   </Item>
 );
 
 export default function Accordion({ categories, items }) {
-  // Consumir as novas props
   const [openAccordions, setOpenAccordions] = useState([]);
 
   const handleExpand = useCallback(index => {
@@ -36,13 +35,15 @@ export default function Accordion({ categories, items }) {
 
   const isOpen = useCallback(
     index => {
+      console.log('isOpen', openAccordions);
+
       return openAccordions.filter(item => item === index).length > 0;
     },
     [openAccordions]
   );
 
   return (
-    <Container uuid="1" onChange={index => handleExpand(index)}>
+    <Container uuid="0" onChange={index => handleExpand(index)}>
       {categories.map((category, index) => (
         <AccordionItem
           key={category}
