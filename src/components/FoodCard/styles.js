@@ -32,22 +32,23 @@ export const Container = styled(Card)`
 
 export const Flag = styled.div`
   position: absolute;
-  right: ${pxToRem(-18)};
-  top: ${pxToRem(-18)};
+  right: ${pxToRem(1)};
+  top: ${pxToRem(4)};
 
-  border-radius: 50%;
-  width: ${pxToRem(48)};
-  height: ${pxToRem(48)};
+  border-radius: ${pxToRem(12)};
+  padding: ${pxToRem(12)};
+  height: ${pxToRem(22)};
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   transition: 0.3s;
-  background: ${({ isOpen }) =>
-    isOpen ? colors.secondary : colors.secondaryLight};
+  background: ${colors.secondary};
 
   > span {
+    margin-left: ${metrics.baseSpacing(0.5)};
+
     ${fonts.size0};
     font-weight: 700;
     text-align: center;

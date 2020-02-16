@@ -12,5 +12,8 @@ export default function Card({ children, ...rest }) {
 }
 
 Card.propTypes = {
-  children: PropTypes.oneOf([PropTypes.array, PropTypes.node]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };

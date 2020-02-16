@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+
+import { isRestaurantOpen } from 'src/functions';
 
 import { Container, Flag } from './styles';
 
 export default function FoodCard({ image, name, description, price, sales }) {
+  const havePromos = useMemo(() => {
+    return sales.length > 0;
+  }, [sales.length]);
+
+  const isPromoActive = useCallback(() => {
+    return havePromos ? isRestaurantOpen(sales.hours) : false;
+  }, [havePromos, sales.hours]);
+
   return (
     <Container>
       <img src={image} alt="Logo" />
@@ -19,11 +29,17 @@ export default function FoodCard({ image, name, description, price, sales }) {
         </div>
       </div>
 
-      <Flag className="flag">
-        <i>Icon</i>
+      {isPromoActive && (
+        <Flag className="flag">
+          <img
+            alt="Logo"
+            className="icon"
+            src={require('src/assets/icons/award.svg')}
+          />
 
-        <span>Promo Almoco</span>
-      </Flag>
+          <span>Promo Almoco</span>
+        </Flag>
+      )}
     </Container>
   );
 }

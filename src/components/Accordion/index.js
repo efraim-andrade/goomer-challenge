@@ -43,9 +43,10 @@ export default function Accordion({ categories, items }) {
   );
 
   return (
-    <Container uuid="0" onChange={index => handleExpand(index)}>
+    <Container onChange={index => handleExpand(index)}>
       {categories.map((category, index) => (
         <AccordionItem
+          uuid={index}
           key={category}
           category={category}
           items={items}
