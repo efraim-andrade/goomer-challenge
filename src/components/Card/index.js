@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { Container, Flag } from './styles';
 
 export default function Card({ name, address, hours, image }) {
-  function isClosed() {
-    return true;
-  }
+  const getHours = useCallback(hourAndMinutes => {
+    return Number(hourAndMinutes.split(':')[0]);
+  }, []);
+
+  const isClosed = () => true;
+
+  // const isClosed = useCallback(
+  //   ({ hourToOpen, hourToClose }) => {
+  //     const open = hours && getHours(hourToOpen);
+  //     const close = hours && getHours(hourToClose);
+
+  //     const now = new Date().getHours();
+
+  //     return now > open && now < close;
+  //   },
+  //   [getHours, hours]
+  // );
+
+  const hoursLength = useMemo(() => {
+    return hours.length;
+  }, [hours]);
+
+  const isClosedText = useMemo(() => {
+    if (hoursLength > 0) {
+      return isClosed() ? 'Fechado' : 'Aberto agora';
+    }
+
+    return 'Fechado';
+  }, [hoursLength, isClosed]);
 
   return (
     <Container href="#" data-testid="restaurant">
@@ -16,7 +42,7 @@ export default function Card({ name, address, hours, image }) {
         <h1>{name}</h1>
         <p>{address}</p>
 
-        {hours.length > 0 && (
+        {hoursLength > 0 && (
           <div className="hours">
             <p>horários</p>
 
@@ -31,8 +57,8 @@ export default function Card({ name, address, hours, image }) {
         )}
       </div>
 
-      <Flag className="flag" isClosed={isClosed()}>
-        <span>{isClosed() ? 'Fechado' : 'Aberto agora'}</span>
+      <Flag className="flag" isClosed={hoursLength && true}>
+        <span>{isClosedText}</span>
       </Flag>
     </Container>
   );
