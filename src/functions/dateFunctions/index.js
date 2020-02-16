@@ -1,4 +1,11 @@
-import { isAfter, isBefore, addDays, addHours, addMinutes } from 'date-fns';
+import {
+  isAfter,
+  isBefore,
+  addDays,
+  addHours,
+  addMinutes,
+  subDays,
+} from 'date-fns';
 import { parseFromTimeZone } from 'date-fns-timezone';
 
 function getStringHours(hourAndMinutes) {
@@ -36,13 +43,16 @@ export default function isRestaurantOpen(openHours) {
 
       const now = new Date();
 
-      const from = handleNewDate({
+      let from = handleNewDate({
         hours: getStringHours(hour.from),
         minutes: getStringMinutes(hour.from),
       });
 
       let to;
-      if (getStringHours(hour.to) < getStringHours(hour.from)) {
+      if (
+        getStringHours(hour.to) < getStringHours(hour.from) &&
+        getStringHours(hour.to) < now.getHours()
+      ) {
         to = addDays(
           handleNewDate({
             hours: getStringHours(hour.to),
@@ -55,11 +65,23 @@ export default function isRestaurantOpen(openHours) {
           hours: getStringHours(hour.to),
           minutes: getStringMinutes(hour.to),
         });
+
+        const nightShift = 18;
+        if (
+          getStringHours(hour.to) >= now.getHours() &&
+          getStringHours(hour.from) >= nightShift
+        ) {
+          from = subDays(from, 1);
+        }
       }
 
       console.log(`now`, now);
       console.log(`from`, from);
       console.log(`to`, to);
+      console.log(
+        `isAfter(now, from) && isBefore(now, to)`,
+        isAfter(now, from) && isBefore(now, to)
+      );
 
       return isAfter(now, from) && isBefore(now, to);
     }).length > 0

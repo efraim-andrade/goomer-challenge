@@ -5,6 +5,7 @@ import { filterRestaurants } from 'src/functions';
 import { Search, Card } from 'src/components';
 import api from 'src/services/api';
 
+import mock from './dataMock';
 import { Container, Content, LoadingIcon, Message } from './styles';
 
 export default function Home() {
@@ -23,7 +24,7 @@ export default function Home() {
         const { data } = await api.get('restaurants');
 
         setError(false);
-        setRestaurants(data);
+        setRestaurants(mock);
         setAllRestaurants(data);
       } catch (err) {
         setError(true);
