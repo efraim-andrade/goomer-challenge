@@ -6,7 +6,6 @@ import { Search, Card } from '~/components';
 import { filterRestaurants } from '~/functions';
 
 import { Container, Content, LoadingIcon, Message } from './styles';
-import mock from './dataMock';
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState([]);
