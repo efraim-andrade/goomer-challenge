@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { pxToRem } from 'src/functions';
 import { metrics, colors, fonts } from 'src/theme';
 
-export const Container = styled.a`
+export const Container = styled(Link)`
   position: relative;
 
   width: 100%;

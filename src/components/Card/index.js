@@ -5,7 +5,7 @@ import { isRestaurantOpen } from 'src/functions';
 
 import { Container, Flag } from './styles';
 
-export default function Card({ name, address, hours, image }) {
+export default function Card({ id, name, address, hours, image }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const hoursLength = useMemo(() => {
@@ -44,7 +44,7 @@ export default function Card({ name, address, hours, image }) {
   }, []);
 
   return (
-    <Container href="#" data-testid="restaurant">
+    <Container to={`detalhes/${id}`} data-testid="restaurant">
       <img src={image} alt="Logo" />
 
       <div className="info">
@@ -80,6 +80,7 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,

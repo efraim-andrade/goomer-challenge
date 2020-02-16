@@ -6,13 +6,25 @@ import { colors } from 'src/theme';
 
 import { Container } from './styles';
 
-export default function Search({ searchRestaurant, setSearchRestaurant }) {
+export default function Search({
+  searchRestaurant,
+  setSearchRestaurant,
+  isDetail,
+  placeholder,
+  ...rest
+}) {
   return (
-    <Container>
+    <Container isDetail={isDetail} {...rest}>
+      {isDetail && (
+        <div className="label">
+          <span>Buscar no cardapio</span>
+        </div>
+      )}
+
       <input
         type="text"
         value={searchRestaurant}
-        placeholder="Buscar estabelecimento"
+        placeholder={placeholder}
         onChange={event => setSearchRestaurant(event.target.value)}
       />
 
@@ -23,7 +35,14 @@ export default function Search({ searchRestaurant, setSearchRestaurant }) {
   );
 }
 
+Search.defaultProps = {
+  isDetail: false,
+  placeholder: 'Buscar estabelecimento',
+};
+
 Search.propTypes = {
+  isDetail: PropTypes.bool,
+  placeholder: PropTypes.string,
   searchRestaurant: PropTypes.string.isRequired,
   setSearchRestaurant: PropTypes.func.isRequired,
 };

@@ -1,5 +1,5 @@
-import Header from './Header';
-import Search from './Search';
-import Card from './Card';
-
-export { Header, Search, Card };
+export { default as Card } from './Card';
+export { default as Header } from './Header';
+export { default as Search } from './Search';
+export { default as Accordion } from './Accordion';
+export { default as RestaurantInfo } from './RestaurantInfo';
