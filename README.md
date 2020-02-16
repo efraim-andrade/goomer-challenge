@@ -4,7 +4,7 @@
 
 ## ✨ Projeto
 
-O Projeto envolve mostrar uma lista de restaurantes com seu cardápio e horário de funcionamento, onde envolve manipulação de horários e datas, filtragem de conteúdo, e consumo de API.
+O Projeto mostra uma lista de restaurantes com seu cardápio e horário de funcionamento, onde envolve manipulação de horários e datas, filtragem de conteúdo, e consumo de API.
 
 [Mais Informações...](#Challenge---Developer-Frontend)
 
