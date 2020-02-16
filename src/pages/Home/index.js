@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
 
-import { filterRestaurants } from 'src/functions';
-import { Search, Card } from 'src/components';
 import api from 'src/services/api';
+import { filterRestaurants } from 'src/functions';
+import { Search, Card, LoadingIcon } from 'src/components';
 
-import mock from './dataMock';
-import { Container, Content, LoadingIcon, Message } from './styles';
+import { Container, Content, Message } from './styles';
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState([]);
@@ -24,7 +23,7 @@ export default function Home() {
         const { data } = await api.get('restaurants');
 
         setError(false);
-        setRestaurants(mock);
+        setRestaurants(data);
         setAllRestaurants(data);
       } catch (err) {
         setError(true);

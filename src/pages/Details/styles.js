@@ -7,11 +7,11 @@ import { Search as SearchC } from 'src/components';
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 1320px;
   margin: 0 auto;
+  max-width: ${pxToRem(1320)};
 
   ${media.lessThan('large')`
-    padding: 0 20px;
+    padding: 0 ${pxToRem(20)};
   `}
 
   > .content {
@@ -20,6 +20,7 @@ export const Container = styled.div`
 
     > .left {
       width: 100%;
+      max-width: ${pxToRem(800)};
       margin-right: ${metrics.baseSpacing(16)};
     }
 
@@ -34,5 +35,6 @@ export const Container = styled.div`
 `;
 
 export const Search = styled(SearchC)`
+  width: 100%;
   margin-bottom: ${metrics.baseSpacing(4)};
 `;

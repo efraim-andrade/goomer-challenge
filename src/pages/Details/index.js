@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import api from 'src/services/api';
-import { RestaurantInfo, Accordion } from 'src/components';
+import { RestaurantInfo, Accordion, LoadingIcon } from 'src/components';
 
 import { Container, Search } from './styles';
 
@@ -13,6 +13,7 @@ export default function Details() {
   const { restaurantID } = useParams();
 
   const [restaurantMenu, setRestaurantMenu] = useState([]);
+  const [isLoading, setIsLoading] = useState([]);
 
   useEffect(() => {
     function setTheMenuCategories(menu) {
@@ -24,6 +25,7 @@ export default function Details() {
     }
 
     async function fetchMenu() {
+      setIsLoading(true);
       try {
         const { data } = await api.get(`restaurants/${restaurantID}/menu`);
 
@@ -33,6 +35,8 @@ export default function Details() {
         toast.error(
           'Algo deu errado ao buscar o menu, tente novamente mais tarde!'
         );
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -47,7 +51,11 @@ export default function Details() {
         <div className="left">
           <Search isDetail placeholder="" />
 
-          <Accordion categories={categories} items={restaurantMenu} />
+          {isLoading ? (
+            <LoadingIcon />
+          ) : (
+            <Accordion categories={categories} items={restaurantMenu} />
+          )}
         </div>
 
         <div className="right" />

@@ -1,13 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import FoodCard from '../FoodCard';
 import { Container, Item, Heading, Button, Content, Icon } from './styles';
 
-const AccordionItem = ({ item, isOpen }) => (
-  <Item key={item}>
+const AccordionItem = ({ category, isOpen, items }) => (
+  <Item>
     <Heading>
       <Button>
-        <p>Abrir</p>{' '}
+        <p>{category}</p>{' '}
         <Icon
           alt="Icone"
           className="icon"
@@ -17,11 +18,16 @@ const AccordionItem = ({ item, isOpen }) => (
       </Button>
     </Heading>
 
-    <Content>ooo</Content>
+    <Content>
+      {items.map(item => (
+        <FoodCard key={item.name} />
+      ))}
+    </Content>
   </Item>
 );
 
 export default function Accordion({ categories, items }) {
+  // Consumir as novas props
   const [openAccordions, setOpenAccordions] = useState([]);
 
   const handleExpand = useCallback(index => {
@@ -37,10 +43,11 @@ export default function Accordion({ categories, items }) {
 
   return (
     <Container uuid="1" onChange={index => handleExpand(index)}>
-      {[1, 2, 3].map((item, index) => (
+      {categories.map((category, index) => (
         <AccordionItem
-          key={item}
-          item={item}
+          key={category}
+          category={category}
+          items={items}
           index={index}
           isOpen={isOpen(index)}
         />
@@ -51,7 +58,8 @@ export default function Accordion({ categories, items }) {
 
 AccordionItem.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  item: PropTypes.number.isRequired,
+  category: PropTypes.number.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 Accordion.propTypes = {
