@@ -32,7 +32,7 @@ module.exports = {
         newlinesBetween: 'always',
         groups: [
           ['/^react/', 'module'],
-          '/^~/',
+          ['/^src/', '/^~/'],
           ['parent', 'sibling', 'index'],
         ],
         alphabetize: { order: 'ignore', ignoreCase: true },
@@ -56,8 +56,8 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      'babel-plugin-root-import': {
-        rootPathSuffix: 'src',
+      node: {
+        paths: ['.'],
       },
     },
   },

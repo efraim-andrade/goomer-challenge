@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
 
-import api from '~/services/api';
-import { Search, Card } from '~/components';
-import { filterRestaurants } from '~/functions';
+import { filterRestaurants } from 'src/functions';
+import { Search, Card } from 'src/components';
+import api from 'src/services/api';
 
 import { Container, Content, LoadingIcon, Message } from './styles';
 

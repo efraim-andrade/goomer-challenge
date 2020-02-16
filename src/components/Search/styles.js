@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { pxToRem } from '~/functions';
-import { metrics, colors } from '~/theme';
+import { pxToRem } from 'src/functions';
+import { metrics, colors } from 'src/theme';
 
 export const Container = styled.div`
   height: ${metrics.baseSpacing(5)};

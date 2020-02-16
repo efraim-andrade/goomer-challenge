@@ -1,7 +1,7 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { isRestaurantOpen } from '~/functions';
+import { isRestaurantOpen } from 'src/functions';
 
 import { Container, Flag } from './styles';
 

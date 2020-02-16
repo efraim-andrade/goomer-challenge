@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { metrics, colors, fonts } from '~/theme';
-import { pxToRem } from '~/functions';
+import { pxToRem } from 'src/functions';
+import { metrics, colors, fonts } from 'src/theme';
 
 export const Container = styled.a`
   position: relative;

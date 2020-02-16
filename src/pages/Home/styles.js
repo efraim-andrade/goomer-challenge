@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import { Eclipse } from 'react-loading-io';
 
-import { fonts, metrics, colors } from '~/theme';
+import { fonts, metrics, colors } from 'src/theme';
 
 export const Container = styled.div`
   width: 100%;

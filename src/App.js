@@ -1,9 +1,9 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 
-import Routes from '~/routes';
-import { Header } from '~/components';
-import GlobalStyles from '~/theme/global';
+import Routes from 'src/routes';
+import { Header } from 'src/components';
+import GlobalStyles from 'src/theme/global';
 
 export default function App() {
   return (

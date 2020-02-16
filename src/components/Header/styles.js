@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { pxToRem } from '~/functions';
-import { colors, metrics } from '~/theme';
+import { pxToRem } from 'src/functions';
+import { colors, metrics } from 'src/theme';
 
 export const Container = styled.div`
   width: 100vw;

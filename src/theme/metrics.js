@@ -1,4 +1,4 @@
-import { pxToRem } from '~/functions';
+import { pxToRem } from 'src/functions';
 
 export default {
   maxWidth: pxToRem(1300),
