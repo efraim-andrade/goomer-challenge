@@ -1,4 +1,4 @@
-import { isRestaurantOpen } from '.';
+import isRestaurantOpen from '.';
 import { normalShift, nightShift } from './mock';
 
 describe('Functions - dateFunctions', () => {
@@ -9,12 +9,12 @@ describe('Functions - dateFunctions', () => {
   it('should be able to filter if is a open day in the restaurant', () => {
     const result = isRestaurantOpen(normalShift);
 
-    expect(result.length).toBeGreaterThan(0);
+    expect(result).toBeFalsy();
   });
 
   it('should be able to filter if is a open night in the restaurant even if turn the dawn ', () => {
     const result = isRestaurantOpen(nightShift);
 
-    expect(result.length).toBeGreaterThan(0);
+    expect(result).toBeTruthy();
   });
 });

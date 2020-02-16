@@ -81,8 +81,8 @@ export const Flag = styled.div`
   justify-content: center;
 
   transition: 0.3s;
-  background: ${({ isClosed }) =>
-    isClosed ? colors.secondaryLight : colors.secondary};
+  background: ${({ isOpen }) =>
+    isOpen ? colors.secondary : colors.secondaryLight};
 
   > span {
     ${fonts.size0};

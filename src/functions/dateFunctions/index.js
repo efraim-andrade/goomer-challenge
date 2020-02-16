@@ -1,36 +1,63 @@
-import { isAfter, isBefore, addDays, addHours } from 'date-fns';
+import { isAfter, isBefore, addDays, addHours, addMinutes } from 'date-fns';
+import { parseFromTimeZone } from 'date-fns-timezone';
 
-export function getStringHours(hourAndMinutes) {
+function getStringHours(hourAndMinutes) {
   return Number(hourAndMinutes.split(':')[0]);
 }
 
-export function isRestaurantOpen(openHours) {
-  return openHours.filter(hour => {
-    const nowDay = new Date().getDay() + 1;
+function getStringMinutes(hourAndMinutes) {
+  return Number(hourAndMinutes.split(':')[1]);
+}
 
-    const isTodayHour = hour.days.filter(day => day === nowDay);
+function timezoneToBrazil(date) {
+  return parseFromTimeZone(date, { timeZone: 'America/Bahia' });
+}
 
-    if (isTodayHour.length === 0) {
-      return false;
-    }
+function handleNewDate({ hours, minutes }) {
+  const theDate = new Date();
+  const hoursTimestamp = theDate.setHours(0);
+  const rightHoursDate = new Date(hoursTimestamp);
+  const minutesTimestamp = rightHoursDate.setMinutes(0);
+  const rightMinutesAndHours = timezoneToBrazil(new Date(minutesTimestamp));
 
-    const now = new Date();
+  return addMinutes(addHours(rightMinutesAndHours, hours), minutes);
+}
 
-    const from = addHours(
-      new Date(new Date().setHours(0)),
-      getStringHours(hour.from)
-    );
+export default function isRestaurantOpen(openHours) {
+  return (
+    openHours.filter(hour => {
+      const nowDay = timezoneToBrazil(new Date()).getDay() + 1;
 
-    let to;
-    if (getStringHours(hour.to) < getStringHours(hour.from)) {
-      to = addHours(
-        addDays(new Date(new Date().setHours(0)), 1),
-        getStringHours(hour.to)
-      );
-    } else {
-      to = addHours(new Date(new Date().setHours(0)), getStringHours(hour.to));
-    }
+      const isTodayHour = hour.days.filter(day => day === nowDay);
 
-    return isAfter(now, from) && isBefore(now, to);
-  });
+      if (isTodayHour.length === 0) {
+        return false;
+      }
+
+      const now = new Date();
+
+      const from = handleNewDate({
+        hours: getStringHours(hour.from),
+        minutes: getStringMinutes(hour.from),
+      });
+
+      let to;
+      if (getStringHours(hour.to) < getStringHours(hour.from)) {
+        to = addDays(
+          handleNewDate({
+            hours: getStringHours(hour.to),
+            minutes: getStringMinutes(hour.to),
+          }),
+          1
+        );
+      } else {
+        to = handleNewDate({
+          hours: getStringHours(hour.to),
+          minutes: getStringMinutes(hour.to),
+        });
+      }
+
+      return isAfter(now, from) && isBefore(now, to);
+    }).length > 0
+  );
 }
