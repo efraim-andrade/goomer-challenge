@@ -8,6 +8,8 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
+
+    font-family: Montserrat, sans-serif;
   }
 
   *:focus {
@@ -20,10 +22,6 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased;
-  }
-
-  body, input, button {
-    font-family: Montserrat, sans-serif;
   }
 
   a {

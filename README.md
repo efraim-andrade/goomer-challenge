@@ -4,13 +4,29 @@
 
 ## ✨ Projeto
 
-O Projeto envolve mostrar uma lista de restaurantes com seu cardápio e horário de funcionamento, onde envolve manipulação de horários e datas, filtragem de conteúdo, e consumo de API.
+O Projeto mostra uma lista de restaurantes com seu cardápio e horário de funcionamento, onde envolve manipulação de horários e datas, filtragem de conteúdo, e consumo de API.
 
 [Mais Informações...](#Challenge---Developer-Frontend)
+
+<!-- Aqui vai vir as estatisticas/observacoes do projeto  -->
 
 ### [Demonstracao online](https://goomerchallenge.netlify.com)
 
 <!-- Aqui vai vir o GIF do funcionamento  -->
+
+#### Desafios
+
+- Lidar com a parte de horários e datas foi sem dúvida a parte mais desafiadora do challenge, principalmente por conta de ter que lidar com horários de restaurantes que podiam abrir em um dia e fechar no outro.
+
+#### Problemas
+
+- Tive dificuldade na parte de fazer o mock do new Date() do javascript por alguma incompatibilidade com o date-fns ou por simplesmente resetar os setters do Date e nao pegar os dados corretos passados para a função
+
+## :office: Usando Localmente
+
+:cloud: Clonar projeto
+
+`$ git clone git@github.com:efraim-andrade/goomer-challenge.git`
 
 📦 Instalar dependencias
 
@@ -22,7 +38,7 @@ O Projeto envolve mostrar uma lista de restaurantes com seu cardápio e horário
 
 ---
 
-## :scroll: Testes
+### :scroll: Testes
 
 Rodar testes automatizados
 

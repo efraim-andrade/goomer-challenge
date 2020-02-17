@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { Eclipse } from 'react-loading-io';
 
 import { fonts, metrics, colors } from 'src/theme';
 
@@ -45,15 +44,6 @@ export const Content = styled.div`
   @media screen and (max-width: 770px) {
     grid-template-columns: 1fr;
   }
-`;
-
-export const LoadingIcon = styled(Eclipse).attrs({
-  color: colors.primary,
-  size: 120,
-})`
-  margin: 0 auto;
-
-  display: block;
 `;
 
 export const Message = styled.span`

@@ -1,7 +1,45 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 import { pxToRem } from 'src/functions';
-import { metrics, colors } from 'src/theme';
+import { metrics, colors, fonts } from 'src/theme';
+
+const isDetailStyles = css`
+  padding-left: 0;
+
+  background: ${colors.greyDark};
+
+  > .label {
+    height: 100%;
+    min-width: ${pxToRem(214)};
+    margin-right: ${metrics.baseSpacing()};
+    border-radius: ${pxToRem(20)} 0 0 ${pxToRem(20)};
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: ${colors.white};
+
+    ${media.lessThan('small')`
+      min-width: ${pxToRem(140)};
+    `}
+
+    > span {
+      ${fonts.size2};
+      font-weight: 400;
+      color: ${colors.dark};
+
+      ${media.lessThan('small')`
+        ${fonts.size1};
+      `}
+    }
+  }
+
+  > input {
+    background: ${colors.greyDark};
+  }
+`;
 
 export const Container = styled.div`
   height: ${metrics.baseSpacing(5)};
@@ -35,4 +73,6 @@ export const Container = styled.div`
 
     background: transparent;
   }
+
+  ${({ isDetail }) => isDetail && isDetailStyles};
 `;
