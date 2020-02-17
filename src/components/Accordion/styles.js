@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 import {
   Accordion,
   AccordionItem,
@@ -50,6 +51,10 @@ export const Content = styled(AccordionItemPanel)`
 
   grid-gap: ${pxToRem(30)};
   grid-template-columns: 1fr 1fr;
+
+  ${media.lessThan('small')`
+    grid-template-columns: 1fr;
+  `}
 
   ${({ isOpen }) =>
     isOpen &&

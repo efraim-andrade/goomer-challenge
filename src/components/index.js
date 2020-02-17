@@ -2,6 +2,7 @@ export { default as Card } from './Card';
 export { default as Modal } from './Modal';
 export { default as Header } from './Header';
 export { default as Search } from './Search';
+export { default as Picker } from './Picker';
 export { default as Accordion } from './Accordion';
 export { default as LoadingIcon } from './LoadingIcon';
 export { default as RestaurantInfo } from './RestaurantInfo';

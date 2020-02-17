@@ -18,10 +18,18 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
 
+    ${media.lessThan('small')`
+      flex-direction: column;
+    `}
+
     > .left {
       width: 100%;
       max-width: ${pxToRem(800)};
       margin-right: ${metrics.baseSpacing(16)};
+
+      ${media.lessThan('medium')`
+        margin-right: ${metrics.baseSpacing(8)};
+      `}
     }
 
     > .right {
@@ -30,6 +38,10 @@ export const Container = styled.div`
       border-radius: ${metrics.borderRadius()};
 
       background: ${colors.greyDark};
+
+      ${media.lessThan('small')`
+        display: none;
+      `}
     }
   }
 `;

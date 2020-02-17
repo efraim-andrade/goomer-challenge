@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaTimes } from 'react-icons/fa';
 
+import Picker from '../Picker';
 import { Container } from './styles';
 
 export default function Modal({ isModalOpen, setIsModalOpen, data }) {
   const { name, description, price, image } = data;
 
   return (
-    <Container isOpen={isModalOpen}>
+    <Container
+      isOpen={isModalOpen}
+      onRequestClose={() => setIsModalOpen(false)}
+    >
       <button
         className="close"
         type="button"
@@ -31,7 +35,7 @@ export default function Modal({ isModalOpen, setIsModalOpen, data }) {
         <hr />
 
         <footer>
-          <div className="picker" />
+          <Picker />
 
           <button className="buy" type="button">
             <span>Adicionar</span>

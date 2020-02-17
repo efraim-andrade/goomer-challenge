@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 import { pxToRem } from 'src/functions';
 import { metrics, fonts, colors } from 'src/theme';
@@ -8,6 +9,11 @@ export const Container = styled.div`
 
   display: flex;
 
+  ${media.lessThan('small')`
+    flex-direction: column;
+    align-items: center;
+  `}
+
   > img {
     width: ${pxToRem(145)};
     height: ${pxToRem(145)};
@@ -15,9 +21,18 @@ export const Container = styled.div`
     border-radius: ${metrics.borderRadius()};
 
     object-fit: cover;
+
+    ${media.lessThan('small')`
+      margin-right: 0;
+    `}
   }
 
   > .info {
+    ${media.lessThan('small')`
+      margin-top: ${metrics.baseSpacing(1)};
+      text-align: center;
+    `}
+
     > h2,
     > p,
     > li {

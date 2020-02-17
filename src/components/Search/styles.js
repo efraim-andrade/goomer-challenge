@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 import { pxToRem } from 'src/functions';
 import { metrics, colors, fonts } from 'src/theme';
@@ -20,10 +21,18 @@ const isDetailStyles = css`
 
     background: ${colors.white};
 
+    ${media.lessThan('small')`
+      min-width: ${pxToRem(140)};
+    `}
+
     > span {
       ${fonts.size2};
       font-weight: 400;
       color: ${colors.dark};
+
+      ${media.lessThan('small')`
+        ${fonts.size1};
+      `}
     }
   }
 

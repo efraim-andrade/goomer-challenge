@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import Modal from 'react-modal';
 
 import { metrics, colors, fonts } from 'src/theme';
@@ -10,7 +11,8 @@ export const Container = styled(Modal)`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: ${pxToRem(600)};
+  width: 90%;
+  max-width: ${pxToRem(600)};
   padding: 20px 10px;
   border-radius: ${metrics.borderRadius()};
   box-shadow: 0px 4px 8px #00000033;
@@ -68,6 +70,10 @@ export const Container = styled(Modal)`
         font-weight: 500;
         color: ${colors.black};
         ${fonts.size2};
+
+        ${media.lessThan('small')`
+          width: auto;
+        `}
       }
 
       > span {
@@ -105,6 +111,11 @@ export const Container = styled(Modal)`
         justify-content: space-between;
 
         background: ${colors.primary};
+
+        ${media.lessThan('small')`
+          width: ${pxToRem(180)};
+          height: ${pxToRem(40)};
+        `}
 
         > span {
           ${fonts.size2};
