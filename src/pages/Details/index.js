@@ -2,12 +2,14 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 
 import api from 'src/services/api';
 import { filterItems } from 'src/functions';
 import { RestaurantInfo, Accordion, LoadingIcon } from 'src/components';
+import { colors } from 'src/theme';
 
-import { Container, Search } from './styles';
+import { Container, GoBack, Search } from './styles';
 
 const categories = [];
 
@@ -69,6 +71,10 @@ export default function Details() {
 
   return (
     <Container>
+      <GoBack to="/">
+        <FaArrowLeft size="26" color={colors.primary} />
+      </GoBack>
+
       <RestaurantInfo {...restaurantInfo} />
 
       <div className="content">

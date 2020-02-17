@@ -27,7 +27,7 @@ export default function FoodCard({ image, name, description, price, sales }) {
         </>
       );
 
-    return <div className="current">{`R$ ${price}`}</div>;
+    return <div className="current">{convertMoney(price)}</div>;
   }, [isPromoActive, price, sales]);
 
   return (

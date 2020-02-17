@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import { Link } from 'react-router-dom';
 
-import { metrics, fonts, colors } from 'src/theme';
+import { metrics, colors } from 'src/theme';
 import { pxToRem } from 'src/functions';
 import { Search as SearchC } from 'src/components';
 
 export const Container = styled.div`
+  position: relative;
+
   width: 100%;
   margin: 0 auto;
   max-width: ${pxToRem(1320)};
@@ -44,6 +47,32 @@ export const Container = styled.div`
       `}
     }
   }
+`;
+
+export const GoBack = styled(Link)`
+  position: absolute;
+  left: -100px;
+  top: 0;
+
+  border-radius: 50%;
+  width: ${pxToRem(48)};
+  height: ${pxToRem(48)};
+  box-shadow: 0px 4px 8px #00000029;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: ${colors.white};
+
+  ${media.lessThan('large')`
+    top: ${pxToRem(-20)};
+    left: ${pxToRem(10)};
+  `}
+
+  ${media.lessThan('small')`
+    left: ${pxToRem(10)}
+  `}
 `;
 
 export const Search = styled(SearchC)`
