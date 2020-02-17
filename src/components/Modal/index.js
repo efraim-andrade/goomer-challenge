@@ -22,7 +22,7 @@ export default function Modal({ isModalOpen, setIsModalOpen, data }) {
       </button>
 
       <div className="content">
-        <img src={image} alt="Foto do prato" className="banner" />
+        {image && <img src={image} alt="Foto do prato" className="banner" />}
 
         <h3>{name}</h3>
 

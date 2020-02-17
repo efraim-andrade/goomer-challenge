@@ -8,6 +8,7 @@ import Card from '../Card';
 export const Container = styled(Card)`
   width: 100%;
   max-width: unset;
+  min-height: ${pxToRem(115)};
 
   > .info {
     > .price {

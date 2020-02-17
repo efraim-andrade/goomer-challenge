@@ -33,7 +33,7 @@ export default function FoodCard({ image, name, description, price, sales }) {
   return (
     <>
       <Container onClick={() => setIsModalOpen(true)}>
-        <img src={image} alt="Logo" />
+        {image && <img src={image} alt="Logo" />}
 
         <div className="info">
           <h1>{name}</h1>
