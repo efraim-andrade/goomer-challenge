@@ -1,38 +1,57 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
+
+import { getDayOfTheWeek } from 'src/functions';
 
 import { Container } from './styles';
 
-export default function RestaurantInfo() {
+export default function RestaurantInfo({ name, image, address, hours }) {
+  const haveHours = useMemo(() => {
+    return hours.length > 0;
+  }, [hours]);
+
   return (
     <Container>
-      <img
-        src="https://images.unsplash.com/photo-1525640788966-69bdb028aa73?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d53c30ba55d9ca863d57fabfffdb416b&auto=format&fit=crop&w=1047&q=80"
-        alt="Logo do Restaurante"
-        className="logo"
-      />
+      <img src={image} alt="Logo do Restaurante" className="logo" />
 
       <div className="info">
-        <h2>Nome do restaurante</h2>
+        <h2>{name}</h2>
 
-        <p className="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <p className="description">{address}</p>
 
-        <ul>
-          <li>
-            Segunda a Sexta: <b>13:30 as 15:00</b>
-          </li>
-
-          <li>
-            Sabados: <b>13:30 as 15:00</b>
-          </li>
-
-          <li>
-            Domingo e Feriados: <b>13:30 as 15:00</b>
-          </li>
-        </ul>
+        {haveHours && (
+          <ul>
+            {hours.map((hour, index) => (
+              <li key={index}>
+                {haveHours &&
+                  getDayOfTheWeek({ days: hour.days, isLong: true })}
+                {` `}
+                <b>{hour.from}</b> - <b>{hour.to}</b>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </Container>
   );
 }
+
+RestaurantInfo.defaultProps = {
+  name: '',
+  image: '',
+  address: '',
+  hours: [],
+};
+
+RestaurantInfo.propTypes = {
+  name: PropTypes.string,
+  image: PropTypes.string,
+  address: PropTypes.string,
+  hours: PropTypes.arrayOf(
+    PropTypes.shape({
+      from: PropTypes.string,
+      to: PropTypes.string,
+      days: PropTypes.arrayOf(PropTypes.string),
+    })
+  ),
+};

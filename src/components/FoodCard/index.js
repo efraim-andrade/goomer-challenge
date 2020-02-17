@@ -1,18 +1,31 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { isRestaurantOpen } from 'src/functions';
+import { isRestaurantOpen, convertMoney } from 'src/functions';
 
 import { Container, Flag } from './styles';
 
 export default function FoodCard({ image, name, description, price, sales }) {
   const havePromos = useMemo(() => {
     return sales.length > 0;
-  }, [sales.length]);
+  }, [sales]);
 
   const isPromoActive = useCallback(() => {
-    return havePromos ? isRestaurantOpen(sales.hours) : false;
-  }, [havePromos, sales.hours]);
+    return havePromos ? isRestaurantOpen(sales[0].hours) : false;
+  }, [havePromos, sales]);
+
+  const handlePromoPrice = useCallback(() => {
+    if (isPromoActive())
+      return (
+        <>
+          <div className="current">{convertMoney(sales[0].price)}</div>
+
+          <div className="promo">{convertMoney(price)}</div>
+        </>
+      );
+
+    return <div className="current">{`R$ ${price}`}</div>;
+  }, [isPromoActive, price, sales]);
 
   return (
     <Container>
@@ -22,14 +35,10 @@ export default function FoodCard({ image, name, description, price, sales }) {
         <h1>{name}</h1>
         <p>{description}</p>
 
-        <div className="price">
-          <div className="current">{`R$ ${price}`}</div>
-
-          <div className="promo">{`R$ ${price}`}</div>
-        </div>
+        <div className="price">{handlePromoPrice()}</div>
       </div>
 
-      {isPromoActive && (
+      {isPromoActive() && (
         <Flag className="flag">
           <img
             alt="Logo"
@@ -37,7 +46,7 @@ export default function FoodCard({ image, name, description, price, sales }) {
             src={require('src/assets/icons/award.svg')}
           />
 
-          <span>Promo Almoco</span>
+          <span>{sales[0].description}</span>
         </Flag>
       )}
     </Container>
@@ -49,7 +58,7 @@ FoodCard.defaultProps = {
   image: '',
   description: '',
   price: '',
-  sales: '',
+  sales: [],
 };
 
 FoodCard.propTypes = {

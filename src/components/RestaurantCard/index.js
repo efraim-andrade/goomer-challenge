@@ -1,7 +1,7 @@
-import React, { useMemo, useEffect, useState, useCallback } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { isRestaurantOpen } from 'src/functions';
+import { isRestaurantOpen, getDayOfTheWeek } from 'src/functions';
 
 import { Container, Flag } from './styles';
 
@@ -34,15 +34,6 @@ export default function RestaurantCard({ id, name, address, hours, image }) {
     return 'Fechado';
   }, [hoursLength, isOpen]);
 
-  const getDayOfTheWeek = useCallback(days => {
-    const firstDay = days[0];
-    const lastDay = days[days.length - 1];
-
-    const daysOfTheWeek = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
-
-    return `${daysOfTheWeek[firstDay - 1]} - ${daysOfTheWeek[lastDay - 1]}`;
-  }, []);
-
   return (
     <Container to={`detalhes/${id}`} data-testid="restaurant">
       <img src={image} alt="Logo" />
@@ -58,7 +49,9 @@ export default function RestaurantCard({ id, name, address, hours, image }) {
             <div>
               {hours.map((hour, index) => (
                 <p key={index}>
-                  <b>{hoursLength > 0 && getDayOfTheWeek(hour.days)}</b>
+                  <b>
+                    {hoursLength > 0 && getDayOfTheWeek({ days: hour.days })}
+                  </b>
                   {` `}
                   <span>{hour.from}</span> - <span>{hour.to}</span>
                 </p>

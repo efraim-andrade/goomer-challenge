@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 
 import api from 'src/services/api';
-import { filterRestaurants } from 'src/functions';
+import { filterItems } from 'src/functions';
 import { Search, RestaurantCard, LoadingIcon } from 'src/components';
+import { addRestaurants } from 'src/store/modules/restaurants/actions';
 
 import { Container, Content, Message } from './styles';
 
 export default function Home() {
+  const dispatch = useDispatch();
+
   const [restaurants, setRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState('');
@@ -25,6 +29,7 @@ export default function Home() {
         setError(false);
         setRestaurants(data);
         setAllRestaurants(data);
+        dispatch(addRestaurants(data));
       } catch (err) {
         setError(true);
         toast.error(
@@ -36,12 +41,12 @@ export default function Home() {
     }
 
     fetchRestaurants();
-  }, []);
+  }, [dispatch]);
 
   const handleSearchRestaurants = useCallback(() => {
-    const filteredRestaurants = filterRestaurants({
-      allRestaurants,
-      restaurantName: searchRestaurant,
+    const filteredRestaurants = filterItems({
+      allItems: allRestaurants,
+      searchText: searchRestaurant,
     });
 
     return setRestaurants(filteredRestaurants);
@@ -78,10 +83,7 @@ export default function Home() {
       <header>
         <h1>Bem-vindo ao Lista Rango</h1>
 
-        <Search
-          searchRestaurant={searchRestaurant}
-          setSearchRestaurant={setSearchRestaurant}
-        />
+        <Search search={searchRestaurant} setSearch={setSearchRestaurant} />
       </header>
 
       {renderContent()}

@@ -53,6 +53,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'react/no-array-index-key': 'off',
+    radix: 'off',
   },
   settings: {
     'import/resolver': {

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import FoodCard from '../FoodCard';
 import { Container, Item, Heading, Button, Content, Icon } from './styles';
 
-const AccordionItem = ({ category, isOpen, items }) => (
-  <Item>
+const AccordionItem = ({ index, category, isOpen, items }) => (
+  <Item uuid={index}>
     <Heading>
       <Button>
         <p>{category}</p>{' '}
@@ -46,11 +46,10 @@ export default function Accordion({ categories, items }) {
     <Container onChange={index => handleExpand(index)}>
       {categories.map((category, index) => (
         <AccordionItem
-          uuid={index}
-          key={category}
-          category={category}
           items={items}
           index={index}
+          key={category}
+          category={category}
           isOpen={isOpen(index)}
         />
       ))}
@@ -60,6 +59,7 @@ export default function Accordion({ categories, items }) {
 
 AccordionItem.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
   category: PropTypes.number.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };

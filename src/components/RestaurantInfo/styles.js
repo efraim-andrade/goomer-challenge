@@ -45,6 +45,10 @@ export const Container = styled.div`
 
         ${fonts.size1};
         font-weight: 500;
+
+        > b {
+          color: ${colors.black};
+        }
       }
     }
   }
