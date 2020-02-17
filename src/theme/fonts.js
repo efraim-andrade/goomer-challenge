@@ -13,4 +13,7 @@ export default {
   size3: {
     'font-size': `${24 / remSize}rem`,
   },
+  size4: {
+    'font-size': `${32 / remSize}rem`,
+  },
 };
