@@ -22,6 +22,10 @@ O Projeto mostra uma lista de restaurantes com seu cardápio e horário de funci
 
 - Tive dificuldade na parte de fazer o mock do new Date() por alguma incompatibilidade com o date-fns ou por simplesmente resetar os setters do Date e nao pegar os dados corretos passados para a função.
 
+### Melhorias
+
+- O projeto pode com certeza ter algumas melhoras na questão das manipulações e organização de datas.
+
 ## :office: Usando Localmente
 
 :cloud: Clonar projeto
