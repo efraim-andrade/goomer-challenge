@@ -65,6 +65,11 @@ export const GoBack = styled(Link)`
 
   background: ${colors.white};
 
+  ${media.lessThan('huge')`
+    top: ${pxToRem(-20)};
+    left: ${pxToRem(-10)};
+  `}
+
   ${media.lessThan('large')`
     top: ${pxToRem(-20)};
     left: ${pxToRem(10)};
