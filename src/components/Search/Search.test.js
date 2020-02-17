@@ -7,7 +7,7 @@ describe('Components - Search', () => {
   it('should be able to set the written restaurant', async () => {
     const setSearchRestaurant = jest.fn();
     const { getByPlaceholderText } = render(
-      <Search searchRestaurant="" setSearchRestaurant={setSearchRestaurant} />
+      <Search search="" setSearch={setSearchRestaurant} />
     );
 
     const input = getByPlaceholderText('Buscar estabelecimento');
