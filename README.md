@@ -1,7 +1,10 @@
-# :fork_and_knife: Goomer Challenge :fork_and_knife:
+<h1 align="center">
+    <img alt="React GitHub Repo List" src="./src/assets/images/goomer-logo.png" />
+    <br>
+    :fork_and_knife: Goomer Challenge :fork_and_knife:
+</h1>
 
-<img src="./src/assets/images/goomer-logo.png" style="display: block; margin: 0 auto;" />
-
+ 
 ## ✨ Projeto
 
 O Projeto mostra uma lista de restaurantes com seu cardápio e horário de funcionamento, onde envolve manipulação de horários e datas, filtragem de conteúdo, e consumo de API.
