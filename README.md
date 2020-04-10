@@ -1,5 +1,7 @@
 # :fork_and_knife: Goomer Challenge :fork_and_knife:
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7bfaa6d537f64668b3ad01469cc4701f)](https://app.codacy.com/manual/efraim-andrade/goomer-challenge?utm_source=github.com&utm_medium=referral&utm_content=efraim-andrade/goomer-challenge&utm_campaign=Badge_Grade_Dashboard)
+
 <img src="./src/assets/images/goomer-logo.png" style="display: block; margin: 0 auto;" />
 
 ## ✨ Projeto
