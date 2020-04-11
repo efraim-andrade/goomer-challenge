@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { act } from 'react-dom/test-utils';
 import MockAdapter from 'axios-mock-adapter';
 import configureStore from 'redux-mock-store';
-import { render, configure } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import api from 'src/services/api';
@@ -44,11 +44,7 @@ describe('Pages - Home', () => {
   });
 
   it('should be able to fetch and render restaurants', async () => {
-    const { getAllByTestId } = renderWithRedux(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
-    );
+    const { getAllByTestId } = renderWithRedux(<Home />);
 
     await act(async () => {
       apiMock.onGet('restaurants').reply(200, dataMock);
