@@ -4,7 +4,6 @@
     :fork_and_knife: Goomer Challenge :fork_and_knife:
 </h1>
 
- 
 ## ✨ Projeto
 
 O Projeto mostra uma lista de restaurantes com seu cardápio e horário de funcionamento, onde envolve manipulação de horários e datas, filtragem de conteúdo, e consumo de API.
@@ -15,7 +14,9 @@ O Projeto mostra uma lista de restaurantes com seu cardápio e horário de funci
 
 ### [Demonstracao online](https://goomerchallenge.netlify.com)
 
-<!-- Aqui vai vir o GIF do funcionamento  -->
+<h1 align="center">
+    <img alt="React GitHub Repo List" src="./goomer-challenge.gif" />
+</h1>
 
 #### Desafios
 
